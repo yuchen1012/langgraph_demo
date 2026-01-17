@@ -17,7 +17,7 @@ def calculate(a: float, b: float, operation: str) -> float:
     print(f"调用calculate工具: {a} {operation} {b}")
     result = 0.0;
     match operation:
-        case "add", "+":
+        case "add" | "+":
             result = a + b;
         case "subtrace":
             result = a - b;

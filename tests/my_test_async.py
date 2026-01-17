@@ -10,13 +10,16 @@ async def main():
         input={
             "messages":[{
                 "role": "human",
-                "content": "What's the weather like in New York?"
+                "content": "给当前用户一个祝福语"
             }],
         },
+        config={"configurable": {'username': 'jared'}}
     ):
         print(f"Receiving new event of type: {chunk.event}...")
         print(chunk.data)
         print("\n\n")
+        if isinstance(chunk.data, list) and 'type' in chunk.data[0] and chunk.data[0]['type'] == 'ai':
+            print(chunk.data[0]['content'], end='|')
 
 if __name__ == "__main__":
     asyncio.run(main())
